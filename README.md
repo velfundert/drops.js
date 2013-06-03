@@ -1,6 +1,7 @@
 # Drops.js &ndash; Multiple file upload with drag and drop
 
-Drops.js is a utility library for performing multiple file upload over ajax using drag and drop.
+Drops.js is a small utility library for performing multiple file upload over ajax using drag and drop.
+It works in browsers that support XHR progress events, FormData and FileReader, with no fallback mechanisms.
 
 ## Usage
 
