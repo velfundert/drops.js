@@ -1,36 +1,3 @@
-/*
- * drops.js - multiple file upload with drag and drop.
- *
- * Usage:
- *
- *   drops(selector, options);
- *
- * Selector:
- *
- *   The DOM file drop zone. Must be present in the DOM when drops() is called.
- *
- * Options:
- *
- *   url:        The server address that receives the upload (default "/").
- *   field:      The name of the file field in each request (default "file").
- *   method:     The HTTP method for each upload (default "POST").
- *   accept:     The expected return type from the server (default "text").
- *   formData:   Function to augment or change the formData object.
- *   xhr:        Function to augment or change the XHR object.
- *
- *   progress:   Handler called on progress events, for each file.
- *   error:      Handler called on errors, for each file.
- *   success:    Handler called when each file is uploaded.
- *   complete:   Handler called when all files are uploaded.
- *
- *   dragenter:  Handler called on "dragenter".
- *   dragover:   Handler called on "dragover".
- *   dragexit:   Handler called on "dragexit".
- *   dragleave:  Handler called on "dragleave".
- *   dragend:    Handler called on "dragend".
- *   drop:       Handler called on "drop".
- *
- */
 ;(function(window, document, undefined) {
     "use strict";
 
