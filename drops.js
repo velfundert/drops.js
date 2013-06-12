@@ -80,7 +80,7 @@
 
         xhr.onload = function() {
             if(options.success) options.success(xhr, file);
-            options.progress(file, 100);
+            if(options.progress) options.progress(file, 100);
             done();
         };
         xhr.onerror = function() {
