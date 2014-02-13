@@ -75,7 +75,7 @@
         xhr.setRequestHeader("Accept", options.acccept || "text");
         xhr.setRequestHeader("Cache-Control", "no-cache");
         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-        xhr.setRequestHeader("X-File-Name", file.name);
+        xhr.setRequestHeader("X-File-Name", encodeURIComponent(file.name));
         if(options.xhr) options.xhr(xhr);
 
         xhr.onload = function() {
