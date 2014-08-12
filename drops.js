@@ -37,6 +37,11 @@
             if(fn) fn(event);
             return false;
         };
+        
+        var oldHandler = document[name];
+        if(oldHandler) el.removeEventListener(name, oldHandler, false);
+        document[name] = handler;
+        
         el.removeEventListener(name, handler, false);
         el.addEventListener(name, handler, false);
     };
