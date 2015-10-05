@@ -26,6 +26,19 @@
         });
     };
 
+    window.drops_remove = function(selector) {
+        var el = document.querySelector(selector);
+        var removeHandler = function (name) {
+            var oldHandler = document[name];
+            if(oldHandler) {
+                el.removeEventListener(name, oldHandler, false);
+            }
+        }
+
+        Array('dragenter', 'dragover', 'dragexit', 'dragleave', 'dragend', 'drop')
+            .forEach(removeHandler);
+    };
+
     o.support = function() {
         var xhr = new XMLHttpRequest();
         var xhr2 = !!(xhr && ("upload" in xhr) && ("onprogress" in xhr.upload));
