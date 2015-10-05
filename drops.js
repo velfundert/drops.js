@@ -7,17 +7,22 @@
         if(!o.support()) return;
         var el = document.querySelector(selector);
 
+        o.options = options;
         o.when(el, "dragenter", options.dragenter);
         o.when(el, "dragover",  options.dragover);
         o.when(el, "dragexit",  options.dragexit);
         o.when(el, "dragleave", options.dragleave);
         o.when(el, "dragend",   options.dragend);
 
-        o.when(el, "drop", function(event) {
-            if(options.drop) options.drop(event);
-            o.readFiles(event.dataTransfer.files, options, function(files) {
-                o.uploadFiles(files, options, options.complete);
-            });
+        o.when(el, "drop", options.dropped || drops_runner);
+    };
+
+    window.drops_runner = function(event, options) {
+        o.options.url = options ? options.url : o.options.url;
+
+        if(o.options.drop) o.options.drop(event);
+        o.readFiles(event.dataTransfer.files, o.options, function(files) {
+            o.uploadFiles(files, o.options, o.options.complete);
         });
     };
 
