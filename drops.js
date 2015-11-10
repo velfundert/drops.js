@@ -14,10 +14,10 @@
         o.when(el, "dragleave", options.dragleave);
         o.when(el, "dragend",   options.dragend);
 
-        o.when(el, "drop", options.dropped || drops_runner);
+        o.when(el, "drop", options.dropped || drops.runner);
     };
 
-    window.drops_runner = function(event, options) {
+    window.drops.runner = function(event, options) {
         o.options.url = options ? options.url : o.options.url;
 
         if(o.options.drop) o.options.drop(event);
@@ -26,17 +26,22 @@
         });
     };
 
-    window.drops_remove = function(selector) {
+    window.drops.remove = function(selector) {
         var el = document.querySelector(selector);
-        var removeHandler = function (name) {
-            var oldHandler = document[name];
-            if(oldHandler) {
-                el.removeEventListener(name, oldHandler, false);
+        var events = [
+            'dragenter',
+            'dragover',
+            'dragexit',
+            'dragleave',
+            'dragend',
+            'drop'
+        ];
+
+        for (var i = 0; i < events.length; ++i) {
+            if (document[events[i]]) {
+                el.removeEventListener(events[i], document[events[i]], false);
             }
         }
-
-        Array('dragenter', 'dragover', 'dragexit', 'dragleave', 'dragend', 'drop')
-            .forEach(removeHandler);
     };
 
     o.support = function() {
